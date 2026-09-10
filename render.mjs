@@ -87,6 +87,12 @@ if (isCarousel) {
   await page.waitForTimeout(1500);
   await page.evaluate(() => { const t = document.querySelector('.track'); if (t) t.style.transition = 'none'; document.querySelectorAll('.arrow,.dots').forEach(e => e.style.display = 'none'); });
   const count = await page.evaluate(() => document.querySelectorAll('.slide').length);
+  // hard check: no card may end below its footer line (layout() records both on each slide)
+  const overlaps = await page.evaluate(() => [...document.querySelectorAll('.slide')].map((s, i) => ({ i: i + 1, b: +s.dataset.cardBottom || 0, m: +s.dataset.maxBot || 9999 })).filter(x => x.b > x.m + 1));
+  if (overlaps.length) { console.error('OVERLAP: card runs into the footer on slide(s) ' + overlaps.map(o => `${o.i} (${o.b}>${o.m})`).join(', ') + '. Trim the copy on those slides.'); await browser.close(); server.close(); process.exit(2); }
+  // and no card may have been shrunk more than 15% to make it fit: that is a copy problem, not a layout job
+  const shrunk = await page.evaluate(() => [...document.querySelectorAll('.slide')].map((s, i) => ({ i: i + 1, k: +s.dataset.cardScale || 1 })).filter(x => x.k < 0.85));
+  if (shrunk.length) { console.error('TOO LONG: copy on slide(s) ' + shrunk.map(o => `${o.i} (card at ${Math.round(o.k * 100)}%)`).join(', ') + ' only fits by shrinking the card. Trim the headline or sub on those slides.'); await browser.close(); server.close(); process.exit(2); }
   for (let i = 0; i < count; i++) {
     await page.evaluate((n) => typeof goTo === 'function' && goTo(n), i);
     await page.waitForTimeout(250);

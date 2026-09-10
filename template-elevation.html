@@ -433,18 +433,28 @@
       const sparkTop = subTop + sub.offsetHeight + 15;
       spark.style.top = sparkTop + 'px';
       let termTop = sparkTop + 30;
-      // never let the card run into the footer
+      // never let the card run into the footer: tighten, then shrink type, then shrink the card, until it clears 500
       const maxBot = 500;
-      if(termTop + term.offsetHeight > maxBot){
-        termTop = Math.max(sparkTop + 22, maxBot - term.offsetHeight);
-      }
-      // still too tall (4-line headline + 2-line sub): drop the spark and tighten the gaps
-      if(termTop + term.offsetHeight > maxBot){
-        spark.style.display = 'none';
-        sub.style.top = (hlTop + hl.offsetHeight + 12) + 'px';
-        termTop = Math.max(hlTop + hl.offsetHeight + 12 + sub.offsetHeight + 14, maxBot - term.offsetHeight);
-      }
+      const fits = () => termTop + term.offsetHeight <= maxBot;
+      const reflow = (gapSub, gapSpark, gapTerm) => {
+        sub.style.top = (hlTop + hl.offsetHeight + gapSub) + 'px';
+        const st = hlTop + hl.offsetHeight + gapSub + sub.offsetHeight;
+        spark.style.top = (st + gapSpark) + 'px';
+        termTop = Math.max(st + gapTerm, maxBot - term.offsetHeight);
+      };
+      if(!fits()) reflow(12, 8, 14);
+      if(!fits()){ spark.style.display='none'; reflow(10, 0, 12); }
+      let subPx = parseFloat(getComputedStyle(sub).fontSize);
+      while(!fits() && subPx > 13.5){ subPx -= 0.5; sub.style.fontSize = subPx + 'px'; reflow(10, 0, 12); }
+      let hlPx = parseFloat(getComputedStyle(hl).fontSize);
+      while(!fits() && hlPx > 34){ hlPx -= 1; hl.style.fontSize = hlPx + 'px'; reflow(10, 0, 12); }
+      let lnPad = 5;
+      while(!fits() && lnPad > 1){ lnPad -= 1; term.querySelectorAll('.ln').forEach(l => l.style.padding = lnPad + 'px 0'); reflow(10, 0, 12); }
+      if(!fits()){ const k = (maxBot - termTop) / term.offsetHeight; term.style.transformOrigin = 'left top'; term.style.transform = 'scale(' + k.toFixed(3) + ')'; }
       term.style.top = termTop + 'px';
+      s.dataset.cardBottom = Math.round(termTop + term.offsetHeight * (term.style.transform ? parseFloat(term.style.transform.slice(6)) : 1));
+      s.dataset.maxBot = maxBot;
+      s.dataset.cardScale = term.style.transform ? parseFloat(term.style.transform.slice(6)) : 1;
     });
   }
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(layout); }

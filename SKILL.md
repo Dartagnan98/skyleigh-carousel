@@ -94,7 +94,7 @@ Map the copy into the template's `slidesData` shape (formats under "Writing cont
    cd ~/.claude/skills/carousel && node render.mjs /tmp/carousel-<slug>.html /tmp/carousel-<slug>-out
    ```
    Output: `slide-01.jpg … slide-NN.jpg`. `node render.mjs clay|elevation|twitter-photo /tmp/out` renders the sample deck baked into each template. `carousel-assets/` inside any deck always resolves to this skill's `assets/`, so copied decks render from anywhere.
-4. Look at every slide before showing it: no card into the footer, no headline past 3 lines, no text behind the figure. Fix specific slides, re-render.
+4. The clay and elevation layouts self-correct: if a slide's copy is long, the layout drops the spark, then shrinks the sub, then the headline, then the card spacing, then scales the card, until the card clears the footer line. The renderer re-measures every slide afterwards and exits with `OVERLAP: … slide(s) N` if anything still touches the footer. Treat that as a copy problem: trim the named slides and re-render. Never patch CSS around it. Then look at every slide anyway: no headline past 3 lines, no text behind the figure, nothing shrunk so far it looks like a different deck (if the guard had to scale a card, the copy is too long).
 5. Open the slides for the user (`open /tmp/carousel-<slug>-out/*.jpg`) and report in three lines: Reader / Mistake / They know, the winning hook with its score, and the CTA word.
 
 ## Writing content
