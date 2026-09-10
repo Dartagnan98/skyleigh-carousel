@@ -2,7 +2,7 @@
 name: carousel
 description: "Instagram carousels for Skyleigh McCallum (Kamloops + Okanagan Shuswap realtor) and her Elevation Real Estate brand, from locked templates: clay (her clay figure, personal brand), elevation (same figure in Elevation navy/copper), twitter / twitter-photo (Hormozi-style tweet cards, always her name). Only the content varies, the design never does. Use when the user says 'carousel', 'make me a carousel', 'IG carousel', 'clay carousel', 'elevation carousel', 'twitter carousel', 'twitter-photo', 'tweet style', or '/carousel'."
 metadata:
-  version: 1.1.0
+  version: 1.2.0
 ---
 
 # Carousel (Skyleigh McCallum)
@@ -33,6 +33,20 @@ That's the whole setup. The skill then answers to `/carousel`. Needs Node 18+.
 Tweet decks are ALWAYS Skyleigh McCallum, never the Elevation brand. The blue check is part of the design.
 
 If no style word is given, pick by fit: seller/buyer education → `clay`; realtor education → `elevation`; a punchy opinion or a list → `twitter-photo`. Say which you picked. If no topic is given, ask one short question.
+
+## Copy (do this before touching a template)
+
+The design is fixed, so the copy is the whole game. If the `copywriting` skill (Copy OS) or `hormozi-brain` is installed, run the slide copy through it first. If not, this playbook is the fallback and it is not optional:
+
+1. **One reader, one problem.** Name who it's for and the one thing they get wrong. Seller decks: the person about to list. Elevation decks: the agent who wants more deals with less chaos.
+2. **Hook = contrast or cost.** The cover states a gap the reader already feels, in their words, with a number where possible. "Sellers spend weeks on paint colours and five minutes on the list price." "Most agents spend two to four hours on a CMA, then can't defend the number." Never open with a label ("5 pricing tips").
+3. **Promise the list.** Cover ends with "The N things I check before …:" so the swipe has a reason.
+4. **One idea per slide, proof in the card.** Headline = the move in 3 to 5 words. Sub = why it matters, in her voice. Card = the concrete specifics (numbers, days, rooms, names). Specific beats clever every time.
+5. **Sound like her, not a brand.** First person, plain words, short sentences, no jargon, no hype words (game-changer, unlock, elevate, secret). She is kind about homes and direct about numbers.
+6. **Close with a comment CTA** that names the payoff and the word: "Want the real number on your home? Comment PRICE." One CTA, one word, capitalised.
+7. **Cut it down.** Every line under the char limits, every slide readable in two seconds. If a slide needs a second read, split it or delete it.
+
+Check before rendering: Would a stranger stop on the cover? Does every slide earn the next swipe? Is there one number or specific on every slide? Is the CTA a single word? No em dashes, no AI cliches, no exclamation marks.
 
 ## Workflow
 

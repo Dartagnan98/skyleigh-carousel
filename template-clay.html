@@ -9,16 +9,16 @@
   SKYLEIGH McCALLUM INSTAGRAM CAROUSEL TEMPLATE  —  ig-carousel skill
   ============================================================
   The DESIGN is locked. Do NOT touch CSS, layout(), nav, or the
-  clay-Joe rotation. Only edit ONE thing: the `slidesData` array
+  figure pose rotation. Only edit ONE thing: the `slidesData` array
   in the <script> block below.
 
   Per slide you set: cover/outro flags, kicker, hl, sub, term.
   Everything else is automatic:
     - slide number + total  -> from array length
-    - clay Joe pose         -> auto-rotates through the PNG set
+    - clay figure pose      -> auto-rotates through the PNG set
     - vertical rhythm        -> layout() flows it after fonts load
 
-  Requires a sibling folder `carousel-assets/` (joe poses,
+  Requires `carousel-assets/` (served by render.mjs: Skyleigh poses,
   skyleigh-avatar.png, recoleta.otf) served from the same origin.
   ============================================================
 -->
@@ -178,14 +178,14 @@
   .term .ln .ok{background:#CE823E;color:#fff;font-weight:800;}
   .term .ln strong{color:#fff;font-weight:500;}
 
-  /* clay joe */
-  .joe{
+  /* clay figure */
+  .figure{
     position:absolute;z-index:5;
     bottom:128px;right:4px;
     height:206px;
     filter:drop-shadow(0 12px 16px rgba(40,20,5,.32));
   }
-  .slide.cover .joe{height:250px;bottom:56px;}
+  .slide.cover .figure{height:250px;bottom:56px;}
 
 
   /* scroll-stopper: cover + outro go dark brand colour, everything on them flips to white */
@@ -201,7 +201,7 @@
   .slide.cover .wm,.slide.outro .wm{color:rgba(255,255,255,.28);}
   .slide.cover .foot .fname,.slide.outro .foot .fname{color:#fff;}
   .slide.cover .foot .av,.slide.outro .foot .av{box-shadow:0 0 0 2px rgba(255,255,255,.6);}
-  .slide.cover .joe,.slide.outro .joe{filter:drop-shadow(0 14px 18px rgba(0,0,0,.45));}
+  .slide.cover .figure,.slide.outro .figure{filter:drop-shadow(0 14px 18px rgba(0,0,0,.45));}
   /* watermark */
   .wm{
     position:absolute;left:0;right:0;
@@ -278,9 +278,9 @@
   const LOGO = '<svg viewBox="0 0 48 48" fill="none"><path d="M24 9 41 39H30L24 28 18 39H7Z" fill="#F7F7F7"/><path d="M24 9 30 21 24 30 18 21Z" fill="#CE823E"/></svg>';
   const LOGO_DARK = '<svg viewBox="0 0 48 48" fill="none"><path d="M24 9 41 39H30L24 28 18 39H7Z" fill="#2B2B2B"/><path d="M24 9 30 21 24 30 18 21Z" fill="#CE823E"/></svg>';
 
-  /* Clay-Joe poses. The cover always points up at the headline; every
+  /* Clay-Skyleigh poses. The cover always points up at the headline; every
      other slide auto-rotates through this set (poses face the content,
-     which sits to Joe's left). Do not hand-assign poses per slide. */
+     which sits to her left). Do not hand-assign poses per slide. */
   const COVER_POSE = 'skyleigh-point-trim.png';
   const POSE_CYCLE = ['skyleigh-present-trim.png','skyleigh-pointleft-trim.png','skyleigh-thumb-trim.png'];
 
@@ -298,7 +298,7 @@
                cls: 'c' orange cmd | 'a' dim arrow | 'ok' green check
                strong: 'strong' = white bold text, '' = normal
                keep text <= 38 chars (mono lines do not wrap)
-     Slide number + total and the Joe pose are automatic.
+     Slide number + total and the figure pose are automatic.
      ========================================================== */
   const slidesData = [
     { cover:true, kicker:'BEFORE YOU LIST',
@@ -404,7 +404,7 @@
           '<i class="r"></i><i class="y"></i><i class="g"></i>'+
           '<span>skyleigh — zsh</span></div>'+
           '<div class="body">'+termLines+'</div></div>'+
-        '<img class="joe" src="carousel-assets/'+pose+'" alt="">'+
+        '<img class="figure" src="carousel-assets/'+pose+'" alt="">'+
         '<div class="wm">@skyleighmccallum</div>'+
         '<div class="foot"><span class="av"><img src="carousel-assets/skyleigh-avatar.png" alt=""></span>'+
           '<span class="fname">skyleighmccallum</span></div>'+

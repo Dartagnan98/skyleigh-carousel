@@ -2,15 +2,10 @@
 //
 //   node render.mjs <template|deck.html> [out-dir]   (deck.html = a copy of a template with new slidesData)
 //
-//   templates:  blue   orange   terminal   skyleigh   (terminal = clay-Joe, aliases: joe, clay; skyleigh = clay-Skyleigh, alias: sky)
-//   clean:      hide the avatar (blue/orange only; terminal always has Joe)
-//   out-dir:    default /tmp/carousel-export
-//
-//   node render.mjs blue            blue, with you
-//   node render.mjs blue clean      blue, no avatar
-//   node render.mjs orange          orange, with you
-//   node render.mjs terminal        clay-Joe terminal deck
-//   node render.mjs list            show templates
+//   templates:  clay   elevation   twitter   twitter-photo   tweet   (or any deck.html copied from a template)
+//   node render.mjs clay /tmp/out
+//   node render.mjs /tmp/my-deck.html /tmp/out
+//   node render.mjs list
 //
 // Output: <out-dir>/slide-01.jpg ... slide-NN.jpg
 
@@ -25,7 +20,7 @@ const NAMES = {
   elevation: 'template-elevation.html', elev: 'template-elevation.html',
   twitter: 'template-tweet.html', 'twitter-photo': 'template-tweet.html', tweet: 'template-tweet.html', x: 'template-tweet.html',
 };
-// these are the 432x540 "track + goTo" decks (clay-Joe) — http-served, scaled x2.5, always have Joe
+// clay + elevation are the 432x540 "track + goTo" decks: http-served, captured at 5x
 const CAROUSEL = new Set(['clay', 'skyleigh', 'sky', 'elevation', 'elev']);
 
 const args = process.argv.slice(2);
@@ -70,7 +65,7 @@ const MIME = { '.html':'text/html', '.png':'image/png', '.jpg':'image/jpeg', '.j
 let server, files = [];
 
 if (isCarousel) {
-  // ---- clay-Joe: serve the skill folder over http (template.html loads carousel-assets/* over http),
+  // ---- clay decks: serve over http (the template loads carousel-assets/* over http),
   //      alias carousel-assets/ -> assets/, capture each slide via goTo + a fixed 432x540 clip at 2.5x ----
   server = http.createServer((req, res) => {
     let p = decodeURIComponent(req.url.split('?')[0]);
