@@ -97,7 +97,7 @@
 
   /* kicker */
   .kicker{
-    position:absolute;top:50px;left:30px;
+    position:absolute;top:26px;left:30px;
     font-family:'Manrope',sans-serif;
     font-size:9.5px;font-weight:800;letter-spacing:.14em;
     color:#fff;background:#CE823E;
@@ -107,7 +107,7 @@
 
   /* headline */
   .hl{
-    position:absolute;left:30px;right:30px;top:84px;
+    position:absolute;left:30px;right:30px;top:80px;
     font-family:'Open Sauce Sans','Manrope','Archivo','Arial Black',sans-serif;font-weight:900;letter-spacing:-.015em;
     font-weight:700;
     font-size:47px;
@@ -117,7 +117,7 @@
     text-transform:uppercase;
   }
   .hl .o{color:#CE823E;}
-  .slide.cover .hl{font-size:37px;line-height:.94;top:84px;}
+  .slide.cover .hl{font-size:37px;line-height:.94;top:78px;}
 
   /* sub */
   .sub{
@@ -394,7 +394,7 @@
       '<div class="wash"></div>'+
       '<div class="content">'+
         '<div class="topbar">'+
-          '<span class="brand">SKYLEIGH McCALLUM</span>'+
+          '<span class="brand"></span>'+
           '<span class="count"><b>'+count+'</b> / '+TOTAL+'</span>'+
         '</div>'+
         '<div class="kicker">'+d.kicker+'</div>'+
@@ -406,7 +406,7 @@
           '<span>skyleigh — zsh</span></div>'+
           '<div class="body">'+termLines+'</div></div>'+
         '<img class="figure" src="carousel-assets/'+pose+'" alt="">'+
-        '<div class="wm">@skyleighmccallum</div>'+
+        
         '<div class="foot"><span class="av"><img src="carousel-assets/skyleigh-avatar.png" alt=""></span>'+
           '<span class="fname">skyleighmccallum</span></div>'+
         SWIPE+
@@ -429,7 +429,7 @@
       const spark = s.querySelector('.spark');
       const term  = s.querySelector('.term');
       if(!hl||!sub||!spark||!term) return;
-      const hlTop  = cover ? 80 : 84;
+      const hlTop  = cover ? 78 : 80;
       const subTop = hlTop + hl.offsetHeight + (cover ? 22 : 20);
       sub.style.top = subTop + 'px';
       const sparkTop = subTop + sub.offsetHeight + 15;

@@ -72,7 +72,7 @@ Now pick the container. Use the style word if the user gave one; otherwise pick 
 
 | Word | Template | Use it when |
 |---|---|---|
-| `clay` (aliases `skyleigh`, `sky`) | `template-clay.html` | Seller or buyer education, step-by-step. Her clay figure, forest green `#044B35` cover + outro, off-white body, copper `#CE823E`, Open Sauce Sans Black headline, soft white card, her name mark + photo footer, `@skyleighmccallum`. |
+| `clay` (aliases `skyleigh`, `sky`) | `template-clay.html` | Seller or buyer education, step-by-step. Her clay figure, forest green `#044B35` cover + outro, off-white body, copper `#CE823E`, Open Sauce Sans Black headline, soft white card. Chrome matches Elevation: pill kicker, counter, and her photo + handle footer. No top name mark, no watermark (D: her name once, not three times). |
 | `elevation` (alias `elev`) | `template-elevation.html` | Agent education under the Elevation Real Estate brand. Same figure and card, navy `#1B2A4A` cover + outro and headline ink, copper accent. No footer, no top brand text: pill kicker, counter, domain watermark only. |
 | `twitter` | `template-tweet.html` | A punchy opinion or a short list, every slide plain white. Big header (her photo, bold name, blue check, grey handle), one statement in Inter. |
 | `twitter-photo` | `template-tweet.html` | The same, every slide on one of her photos (`assets/photos/skyleigh-1/2/3.jpg`, rotate), white card bottom-left, circle arrow on the cover only. Best scroll-stopper for a hook-led list. |
