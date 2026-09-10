@@ -3,7 +3,7 @@
 Claude Code skill: locked-design Instagram carousels for Skyleigh McCallum and Elevation Real Estate.
 
 ```bash
-git clone git@github.com:Dartagnan98/skyleigh-carousel.git ~/.claude/skills/carousel
+git clone https://github.com/Dartagnan98/skyleigh-carousel.git ~/.claude/skills/carousel
 cd ~/.claude/skills/carousel && npm install && npx playwright install chromium-headless-shell
 ```
 

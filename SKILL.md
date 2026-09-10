@@ -12,7 +12,7 @@ Locked-design Instagram carousels. You pick the template, write the content, ren
 ## Install (once per machine)
 
 ```bash
-git clone git@github.com:Dartagnan98/skyleigh-carousel.git ~/.claude/skills/carousel
+git clone https://github.com/Dartagnan98/skyleigh-carousel.git ~/.claude/skills/carousel
 cd ~/.claude/skills/carousel && npm install && npx playwright install chromium-headless-shell
 ```
 
