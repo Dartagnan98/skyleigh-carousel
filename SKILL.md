@@ -2,7 +2,7 @@
 name: carousel
 description: "Instagram carousels for Skyleigh McCallum (Kamloops + Okanagan Shuswap realtor) and her Elevation Real Estate brand, from locked templates: clay (her clay figure, personal brand), elevation (same figure in Elevation navy/copper), twitter / twitter-photo (Hormozi-style tweet cards, always her name). Only the content varies, the design never does. Use when the user says 'carousel', 'make me a carousel', 'IG carousel', 'clay carousel', 'elevation carousel', 'twitter carousel', 'twitter-photo', 'tweet style', or '/carousel'."
 metadata:
-  version: 1.2.0
+  version: 2.0.0
 ---
 
 # Carousel (Skyleigh McCallum)
@@ -20,37 +20,71 @@ That's the whole setup. The skill then answers to `/carousel`. Needs Node 18+.
 
 ## Invocation
 
-`/carousel <style> <topic>`
+`/carousel [style] [topic]`. Both are optional. The process below runs every time, in this order: **topic, then writing, then carousel style, then render.** Never skip a phase, never reorder them. The design is locked, so the copy is the whole game and phase 2 is where the deck is won or lost.
 
-| Word | Template | What it is |
+## Phase 1: Topic
+
+Lock three things before writing a word. Infer them from the request when you can; if the topic itself is missing, ask exactly one short question and stop.
+
+1. **Reader.** One person. Seller/buyer decks: the homeowner about to list in Kamloops or the Okanagan Shuswap, or the buyer who is scared of overpaying. Elevation decks: the agent who wants more deals with less chaos.
+2. **The one thing they get wrong**, in their words. Not a category ("pricing"), a mistake ("they trust the app's number").
+3. **Awareness.** Does the reader know the problem, know solutions exist, or know her already? Home sellers are usually problem-aware and have heard "free home evaluation" a hundred times, so the copy must reveal HOW she does it differently. Agents are solution-aware and jaded, so lead with the mechanism and the outcome, never the promise alone.
+
+Write the three down in one line in your reply ("Reader: … / Mistake: … / They know: …"). If you cannot name the mistake, the deck has no angle yet. Find one before continuing.
+
+Grounding: every fact comes from her material. Sellers: her CMA process (fresh photos, updates since last sale, comps walked honestly, absorption rate for market type, seasonal buyers, sandwich pricing). Agents: the Elevation PDFs (automated CMA steps, lead segment cadences, open house must-dos, 30-day action plan). Never invent a number, a stat, a testimonial or a deadline. If a claim needs one you do not have, write the line so it does not need it.
+
+## Phase 2: Writing
+
+Run this whether or not a copywriting skill is installed. If `copywriting` (Copy OS) or `hormozi-brain` is available, use it for the same steps; the bar below still applies.
+
+**2a. Hook.** Write at least 8 cover headline candidates across different shapes:
+- the reader's own deadline ("Your home gets one first week on the market.")
+- cost of the mistake ("Price it wrong and you find out in the first week.")
+- contrast ("Sellers spend weeks on paint colours and five minutes on the list price.")
+- mechanism reveal ("Price it tonight, not Thursday.")
+- specific count with a gap ("Six kinds of leads. One cadence fits one of them.")
+- the tangible list ("One open house. 30 doors, one draw, zero lost leads.")
+
+Score every candidate 0 to 10 on each of Bly's 4 U's and total out of 40: **Useful** (a clear benefit), **Urgent** (a reason it matters now: the reader's own timing counts, fake deadlines do not), **Unique** (could a competitor post it word for word?), **Ultra-specific** (numbers, names, tangible details). Keep only candidates at **30 or above**. If nothing clears 30, the angle is wrong: go back to Phase 1 and pick a different mistake. Do not polish a loser.
+
+Rules for the winner: one idea, under 9 words, no label headlines ("5 pricing tips"), no clever wordplay the reader has to decode, no hype words (game-changer, unlock, elevate, secret, hack). The cover sub-line finishes the thought and promises the list ("The 5 checks I run before we pick a number.") so the swipe has a reason.
+
+**2b. Slides.** One idea per slide. Headline = the move in 3 to 5 words. Sub = why it matters, first person, her voice. Card = the concrete specifics (rooms, days, numbers, names). Every slide needs at least one specific. If a slide needs a second read, split it or cut it.
+
+**2c. CTA.** The last slide is a comment CTA built from all five parts: **command** (Comment), **the word** (one capitalised word: PRICE, CMA, SEGMENTS, 30 DAYS), **benefit** (what she sends or does: "I will run these 5 checks on your home", "I will send the full breakdown"), **ease** (free, no listing required, two minutes to read), **why now** (this fall, before you list, before your next listing appointment). Only promise things that exist: her CMA, the Elevation PDFs. Never "DM me for more info", never "link in bio", never two CTAs.
+
+**2d. Voice.** First person, short sentences, plain words. Kind about homes ("nearing end of life", never "dated" or "ugly"), direct about numbers. No em dashes, no exclamation marks, no AI cliches, no rule-of-three filler.
+
+**2e. Gate, before you touch a template.** Answer each in one word in your head; any "no" means rewrite:
+- Would a stranger stop scrolling on the cover?
+- Does the cover promise the list?
+- Does every slide earn the next swipe with one specific?
+- Does the CTA have all five parts and a real payoff?
+- Is every fact from her material?
+- Card lines 38 chars or fewer, cover headline 3 lines or fewer, sub 2 lines?
+
+State the winning hook's 4 U's score in your reply, one line.
+
+## Phase 3: Carousel style
+
+Now pick the container. Use the style word if the user gave one; otherwise pick by fit and say which you picked.
+
+| Word | Template | Use it when |
 |---|---|---|
-| `clay` (aliases `skyleigh`, `sky`) | `template-clay.html` | Her clay figure, personal brand. Forest green `#044B35` cover + outro, off-white body slides, copper `#CE823E` accent, Open Sauce Sans Black headline, soft white card, "SKYLEIGH McCALLUM" mark + her photo footer, `@skyleighmccallum`. Audience: home sellers and buyers. |
-| `elevation` (alias `elev`) | `template-elevation.html` | Same figure and card in Elevation Real Estate colours: navy `#1B2A4A` cover + outro and headline ink, copper accent. No footer, no top brand text (keep it intentional): pill kicker, counter, domain watermark only. Audience: realtors. |
-| `twitter` | `template-tweet.html` | Hormozi-style tweet cards, every slide plain white: big header (her photo, bold name, blue check, grey handle), one statement in Inter. |
-| `twitter-photo` | `template-tweet.html` | Same cards, every slide on one of her photos (`assets/photos/skyleigh-1/2/3.jpg`, rotate), white card bottom-left, circle arrow on the cover only. |
+| `clay` (aliases `skyleigh`, `sky`) | `template-clay.html` | Seller or buyer education, step-by-step. Her clay figure, forest green `#044B35` cover + outro, off-white body, copper `#CE823E`, Open Sauce Sans Black headline, soft white card, her name mark + photo footer, `@skyleighmccallum`. |
+| `elevation` (alias `elev`) | `template-elevation.html` | Agent education under the Elevation Real Estate brand. Same figure and card, navy `#1B2A4A` cover + outro and headline ink, copper accent. No footer, no top brand text: pill kicker, counter, domain watermark only. |
+| `twitter` | `template-tweet.html` | A punchy opinion or a short list, every slide plain white. Big header (her photo, bold name, blue check, grey handle), one statement in Inter. |
+| `twitter-photo` | `template-tweet.html` | The same, every slide on one of her photos (`assets/photos/skyleigh-1/2/3.jpg`, rotate), white card bottom-left, circle arrow on the cover only. Best scroll-stopper for a hook-led list. |
 | `tweet` (alias `x`) | `template-tweet.html` | Mixed: you decide `photo:` per slide. |
 
 Tweet decks are ALWAYS Skyleigh McCallum, never the Elevation brand. The blue check is part of the design.
 
-If no style word is given, pick by fit: seller/buyer education → `clay`; realtor education → `elevation`; a punchy opinion or a list → `twitter-photo`. Say which you picked. If no topic is given, ask one short question.
+Map the copy into the template's `slidesData` shape (formats under "Writing content" below). Clay and elevation carry kicker, headline, sub and card per slide; tweet carries one text block per slide, so merge headline and sub into one statement there.
 
-## Copy (do this before touching a template)
+## Phase 4: Render and check
 
-The design is fixed, so the copy is the whole game. If the `copywriting` skill (Copy OS) or `hormozi-brain` is installed, run the slide copy through it first. If not, this playbook is the fallback and it is not optional:
-
-1. **One reader, one problem.** Name who it's for and the one thing they get wrong. Seller decks: the person about to list. Elevation decks: the agent who wants more deals with less chaos.
-2. **Hook = contrast or cost.** The cover states a gap the reader already feels, in their words, with a number where possible. "Sellers spend weeks on paint colours and five minutes on the list price." "Most agents spend two to four hours on a CMA, then can't defend the number." Never open with a label ("5 pricing tips").
-3. **Promise the list.** Cover ends with "The N things I check before …:" so the swipe has a reason.
-4. **One idea per slide, proof in the card.** Headline = the move in 3 to 5 words. Sub = why it matters, in her voice. Card = the concrete specifics (numbers, days, rooms, names). Specific beats clever every time.
-5. **Sound like her, not a brand.** First person, plain words, short sentences, no jargon, no hype words (game-changer, unlock, elevate, secret). She is kind about homes and direct about numbers.
-6. **Close with a comment CTA** that names the payoff and the word: "Want the real number on your home? Comment PRICE." One CTA, one word, capitalised.
-7. **Cut it down.** Every line under the char limits, every slide readable in two seconds. If a slide needs a second read, split it or delete it.
-
-Check before rendering: Would a stranger stop on the cover? Does every slide earn the next swipe? Is there one number or specific on every slide? Is the CTA a single word? No em dashes, no AI cliches, no exclamation marks.
-
-## Workflow
-
-1. Copy the template for the chosen style to a working file (never edit the templates):
+1. Copy the template to a working file (never edit the templates):
    ```bash
    cp ~/.claude/skills/carousel/template-clay.html /tmp/carousel-<slug>.html
    ```
@@ -60,7 +94,8 @@ Check before rendering: Would a stranger stop on the cover? Does every slide ear
    cd ~/.claude/skills/carousel && node render.mjs /tmp/carousel-<slug>.html /tmp/carousel-<slug>-out
    ```
    Output: `slide-01.jpg … slide-NN.jpg`. `node render.mjs clay|elevation|twitter-photo /tmp/out` renders the sample deck baked into each template. `carousel-assets/` inside any deck always resolves to this skill's `assets/`, so copied decks render from anywhere.
-4. Open the slides for the user (`open /tmp/carousel-<slug>-out/*.jpg`), fix specific slides, re-render. Check that no card runs into the bottom and no cover headline exceeds 3 lines.
+4. Look at every slide before showing it: no card into the footer, no headline past 3 lines, no text behind the figure. Fix specific slides, re-render.
+5. Open the slides for the user (`open /tmp/carousel-<slug>-out/*.jpg`) and report in three lines: Reader / Mistake / They know, the winning hook with its score, and the CTA word.
 
 ## Writing content
 
